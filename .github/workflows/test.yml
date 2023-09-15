@@ -1,0 +1,29 @@
+name: test my-actions
+
+on:
+  push:
+    branches:
+      - "main"
+    path:
+      - ".github/workflows/*"
+      - "src/**"
+      - "package.json"
+
+jobs:
+  test:
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: "actions/checkout@v2"
+
+      - name: create a folder
+        run: mkdir test-f
+
+      - name: create a file
+        run: |
+          cd test-f
+          touch a.txt
+          echo "hello world" > a.txt
+
+      - name: delete a file
+        run: rm -rf a.txt
